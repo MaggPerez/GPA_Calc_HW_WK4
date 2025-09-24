@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/white">
 
 <!--    Title -->
     <TextView
@@ -105,17 +106,22 @@
 
 <!--    Compute Grade -->
     <Button
+        android:id="@+id/buttonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/compute_gpa"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:onClick="onHandleComputeButton"/>
 
 
 
     <!--    Label -->
     <TextView
+        android:id="@+id/gpa_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/displayGPA"
+        android:textSize="20sp" />
 
 
 </LinearLayout>
