@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GPA_Calc_HW_WK4</string>
+    <string name="enter_your_grade">Enter your grade</string>
+    <string name="title">Welcome to GPA Calculator</string>
+    <string name="compute_gpa">Compute GPA</string>
+    <string name="class_one">Class 1</string>
+    <string name="class_two">Class 2</string>
+    <string name="class_three">Class 3</string>
+    <string name="class_four">Class 4</string>
+    <string name="class_five">Class 5</string>
+    <string name="gpa">Current GPA: </string>
+</resources>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+<!--    Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp" />
+
+<!--    Class 1 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/class_one"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/class_one_gpa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_your_grade"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="" />
+
+
+<!--    Class 2-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/class_two"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/class_two_gpa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_your_grade"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="" />
+
+
+<!--    Class 3-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/class_three"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/class_three_gpa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_your_grade"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="" />
+
+
+<!--    Class 4 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/class_four"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/class_four_gpa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_your_grade"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="" />
+
+
+<!--    Class 5 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/class_five"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/class_five_gpa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_your_grade"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="" />
+
+
+
+<!--    Compute Grade -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/compute_gpa"
+        android:layout_gravity="center" />
+
+
+
+    <!--    Label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+</LinearLayout>
