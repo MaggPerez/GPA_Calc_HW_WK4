@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var displayGPA: TextView
 
+    private var currentBackgroundColor: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -45,8 +47,42 @@ class MainActivity : AppCompatActivity() {
         //Initializing displaying grade
         displayGPA = findViewById(R.id.gpa_result)
 
+        //restore saved state if it exists
+        if (savedInstanceState != null) {
+            classGradeOne.setText(savedInstanceState.getString("grade1", ""))
+            classGradeTwo.setText(savedInstanceState.getString("grade2", ""))
+            classGradeThree.setText(savedInstanceState.getString("grade3", ""))
+            classGradeFour.setText(savedInstanceState.getString("grade4", ""))
+            classGradeFive.setText(savedInstanceState.getString("grade5", ""))
+            displayGPA.text = savedInstanceState.getString("gpaResult", getString(R.string.displayGPA))
+            computeButton.setText(savedInstanceState.getString("buttonText", getString(R.string.compute_gpa)))
 
+            currentBackgroundColor = savedInstanceState.getInt("backgroundColor", resources.getColor(R.color.white))
+            findViewById<View>(R.id.main).setBackgroundColor(currentBackgroundColor)
+        } else {
+            currentBackgroundColor = resources.getColor(R.color.white)
+        }
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        //save all grade inputs
+        outState.putString("grade1", classGradeOne.text.toString())
+        outState.putString("grade2", classGradeTwo.text.toString())
+        outState.putString("grade3", classGradeThree.text.toString())
+        outState.putString("grade4", classGradeFour.text.toString())
+        outState.putString("grade5", classGradeFive.text.toString())
+
+        //save displayed GPA result
+        outState.putString("gpaResult", displayGPA.text.toString())
+
+        //save button text
+        outState.putString("buttonText", computeButton.text.toString())
+
+        //save background color
+        outState.putInt("backgroundColor", currentBackgroundColor)
     }
 
     /**
@@ -74,15 +110,18 @@ class MainActivity : AppCompatActivity() {
         //changing background depending on the user's GPA
         if(gpa < 60) {
             //changes the background to red if gpa is < 60
-            findViewById<View>(R.id.main).setBackgroundColor(resources.getColor(R.color.red_bg))
+            currentBackgroundColor = resources.getColor(R.color.red_bg)
+            findViewById<View>(R.id.main).setBackgroundColor(currentBackgroundColor)
         }
         else if ((gpa >= 61) and (gpa <= 79)) {
             //changes the background to yellow if gpa is >= 61 and gpa <= 79
-            findViewById<View>(R.id.main).setBackgroundColor(resources.getColor(R.color.yellow_bg))
+            currentBackgroundColor = resources.getColor(R.color.yellow_bg)
+            findViewById<View>(R.id.main).setBackgroundColor(currentBackgroundColor)
         }
         else if ((gpa >= 80) and (gpa <= 100)){
             //changes the background to green if gpa >= 80 and gpa <= 100
-            findViewById<View>(R.id.main).setBackgroundColor(resources.getColor(R.color.green_bg))
+            currentBackgroundColor = resources.getColor(R.color.green_bg)
+            findViewById<View>(R.id.main).setBackgroundColor(currentBackgroundColor)
         }
 
         //gets the displayGPA R.string and concatenates with the gpa
@@ -110,7 +149,8 @@ class MainActivity : AppCompatActivity() {
         computeButton.setText(R.string.compute_gpa)
 
         //changing the background back to white
-        findViewById<View>(R.id.main).setBackgroundColor(resources.getColor(R.color.white))
+        currentBackgroundColor = resources.getColor(R.color.white)
+        findViewById<View>(R.id.main).setBackgroundColor(currentBackgroundColor)
     }
 }
 
