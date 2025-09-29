@@ -9,5 +9,6 @@
     <string name="class_four">Class 4</string>
     <string name="class_five">Class 5</string>
     <string name="displayGPA">Current GPA: %.2f</string>
+    <string name="displayGPA_default">Current GPA: 0.00</string>
     <string name="clear_form">Clear Form</string>
 </resources>

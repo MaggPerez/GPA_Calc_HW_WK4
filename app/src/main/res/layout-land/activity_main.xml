@@ -52,7 +52,8 @@
                 android:hint="@string/enter_your_grade"
                 android:inputType="numberDecimal"
                 android:layout_marginBottom="12dp"
-                android:autofillHints="" />
+                android:autofillHints=""
+                android:background="@drawable/edittext_border" />
 
 
 <!--    Class 2-->
@@ -69,7 +70,8 @@
                 android:hint="@string/enter_your_grade"
                 android:inputType="numberDecimal"
                 android:layout_marginBottom="12dp"
-                android:autofillHints="" />
+                android:autofillHints=""
+                android:background="@drawable/edittext_border" />
 
 
 <!--    Class 3-->
@@ -86,7 +88,8 @@
                 android:hint="@string/enter_your_grade"
                 android:inputType="numberDecimal"
                 android:layout_marginBottom="12dp"
-                android:autofillHints="" />
+                android:autofillHints=""
+                android:background="@drawable/edittext_border" />
 
         </LinearLayout>
 
@@ -112,7 +115,8 @@
                 android:hint="@string/enter_your_grade"
                 android:inputType="numberDecimal"
                 android:layout_marginBottom="12dp"
-                android:autofillHints="" />
+                android:autofillHints=""
+                android:background="@drawable/edittext_border" />
 
 
 <!--    Class 5 -->
@@ -129,7 +133,8 @@
                 android:hint="@string/enter_your_grade"
                 android:inputType="numberDecimal"
                 android:layout_marginBottom="12dp"
-                android:autofillHints="" />
+                android:autofillHints=""
+                android:background="@drawable/edittext_border" />
 
         </LinearLayout>
 
@@ -152,7 +157,7 @@
         android:id="@+id/gpa_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/displayGPA"
+        android:text="@string/displayGPA_default"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:layout_marginTop="8dp" />

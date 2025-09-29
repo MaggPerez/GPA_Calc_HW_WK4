@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
             classGradeThree.setText(savedInstanceState.getString("grade3", ""))
             classGradeFour.setText(savedInstanceState.getString("grade4", ""))
             classGradeFive.setText(savedInstanceState.getString("grade5", ""))
-            displayGPA.text = savedInstanceState.getString("gpaResult", getString(R.string.displayGPA))
+            displayGPA.text = savedInstanceState.getString("gpaResult", getString(R.string.displayGPA_default))
             computeButton.setText(savedInstanceState.getString("buttonText", getString(R.string.compute_gpa)))
 
             currentBackgroundColor = savedInstanceState.getInt("backgroundColor", resources.getColor(R.color.white))
@@ -96,11 +96,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         //getting user's grades, if there is an empty TextField, it will be highlighted red
-        val grade1 = classGradeOne.text.toString().toDoubleOrNull() ?: return classGradeOne.setBackgroundColor(resources.getColor(R.color.red_bg))
-        val grade2 = classGradeTwo.text.toString().toDoubleOrNull() ?: return classGradeTwo.setBackgroundColor(resources.getColor(R.color.red_bg))
-        val grade3 = classGradeThree.text.toString().toDoubleOrNull() ?: return classGradeThree.setBackgroundColor(resources.getColor(R.color.red_bg))
-        val grade4 = classGradeFour.text.toString().toDoubleOrNull() ?: return classGradeFour.setBackgroundColor(resources.getColor(R.color.red_bg))
-        val grade5 = classGradeFive.text.toString().toDoubleOrNull() ?: return classGradeFive.setBackgroundColor(resources.getColor(R.color.red_bg))
+        val grade1 = classGradeOne.text.toString().toDoubleOrNull() ?: return classGradeOne.setBackgroundResource(R.drawable.edittext_border_error)
+        val grade2 = classGradeTwo.text.toString().toDoubleOrNull() ?: return classGradeTwo.setBackgroundResource(R.drawable.edittext_border_error)
+        val grade3 = classGradeThree.text.toString().toDoubleOrNull() ?: return classGradeThree.setBackgroundResource(R.drawable.edittext_border_error)
+        val grade4 = classGradeFour.text.toString().toDoubleOrNull() ?: return classGradeFour.setBackgroundResource(R.drawable.edittext_border_error)
+        val grade5 = classGradeFive.text.toString().toDoubleOrNull() ?: return classGradeFive.setBackgroundResource(R.drawable.edittext_border_error)
 
 
         //calculating the user's gpa
@@ -132,6 +132,9 @@ class MainActivity : AppCompatActivity() {
         displayGPA.text = totalGPA
         computeButton.setText(R.string.clear_form)
 
+        //clears any TextFields that were highlighted red
+        clearRedTextFields()
+
     }
 
     /**
@@ -144,6 +147,14 @@ class MainActivity : AppCompatActivity() {
         classGradeThree.text.clear()
         classGradeFour.text.clear()
         classGradeFive.text.clear()
+        displayGPA.text = getString(R.string.displayGPA_default)
+
+        //resetting EditText borders to normal
+        classGradeOne.setBackgroundResource(R.drawable.edittext_border)
+        classGradeTwo.setBackgroundResource(R.drawable.edittext_border)
+        classGradeThree.setBackgroundResource(R.drawable.edittext_border)
+        classGradeFour.setBackgroundResource(R.drawable.edittext_border)
+        classGradeFive.setBackgroundResource(R.drawable.edittext_border)
 
         //changing the button text to "Compute GPA"
         computeButton.setText(R.string.compute_gpa)
@@ -151,6 +162,18 @@ class MainActivity : AppCompatActivity() {
         //changing the background back to white
         currentBackgroundColor = resources.getColor(R.color.white)
         findViewById<View>(R.id.main).setBackgroundColor(currentBackgroundColor)
+    }
+
+
+    /**
+     * clears any red highlightings in the textfields if there are any present
+     */
+    fun clearRedTextFields() {
+        classGradeOne.setBackgroundResource(R.drawable.edittext_border)
+        classGradeTwo.setBackgroundResource(R.drawable.edittext_border)
+        classGradeThree.setBackgroundResource(R.drawable.edittext_border)
+        classGradeFour.setBackgroundResource(R.drawable.edittext_border)
+        classGradeFive.setBackgroundResource(R.drawable.edittext_border)
     }
 }
 
