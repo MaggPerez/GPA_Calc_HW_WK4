@@ -1,6 +1,8 @@
 package com.example.gpa_calc_hw_wk4
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -63,8 +65,16 @@ class MainActivity : AppCompatActivity() {
             currentBackgroundColor = resources.getColor(R.color.white)
         }
 
+        //setup TextWatchers on all grade fields
+        setupTextWatchers()
+
     }
 
+
+    /**
+     * Saving the instance state to preserve user inputs, displayed GPA,
+     * button text, and background color across configuration changes.
+     */
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
@@ -84,6 +94,8 @@ class MainActivity : AppCompatActivity() {
         //save background color
         outState.putInt("backgroundColor", currentBackgroundColor)
     }
+
+
 
     /**
      * onHandle function that can compute or clear the form
@@ -181,6 +193,33 @@ class MainActivity : AppCompatActivity() {
         classGradeFive.setBackgroundResource(R.drawable.edittext_border)
     }
 
+
+    /**
+     * Sets up TextWatchers on all grade input fields to enable re-calculation
+     * after a GPA has already been computed
+     */
+    private fun setupTextWatchers() {
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                // If the button says "Clear Form", change it back to "Compute GPA"
+                // so the user can calculate again without clearing
+                if (computeButton.text.equals("Clear Form")) {
+                    computeButton.setText(R.string.compute_gpa)
+                }
+            }
+        }
+
+        // Add the same TextWatcher to all grade fields
+        classGradeOne.addTextChangedListener(textWatcher)
+        classGradeTwo.addTextChangedListener(textWatcher)
+        classGradeThree.addTextChangedListener(textWatcher)
+        classGradeFour.addTextChangedListener(textWatcher)
+        classGradeFive.addTextChangedListener(textWatcher)
+    }
 
     /**
      * Validates that all provided EditText fields are not empty.
