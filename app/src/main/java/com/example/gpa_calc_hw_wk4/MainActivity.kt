@@ -95,12 +95,17 @@ class MainActivity : AppCompatActivity() {
             return clearForm()
         }
 
+        //Validating user's inputs to make sure the EditFields are not empty
+        if (!validateGrade(classGradeOne, classGradeTwo, classGradeThree, classGradeFour, classGradeFive)) {
+            return
+        }
+
         //getting user's grades, if there is an empty TextField, it will be highlighted red
-        val grade1 = classGradeOne.text.toString().toDoubleOrNull() ?: return classGradeOne.setBackgroundResource(R.drawable.edittext_border_error)
-        val grade2 = classGradeTwo.text.toString().toDoubleOrNull() ?: return classGradeTwo.setBackgroundResource(R.drawable.edittext_border_error)
-        val grade3 = classGradeThree.text.toString().toDoubleOrNull() ?: return classGradeThree.setBackgroundResource(R.drawable.edittext_border_error)
-        val grade4 = classGradeFour.text.toString().toDoubleOrNull() ?: return classGradeFour.setBackgroundResource(R.drawable.edittext_border_error)
-        val grade5 = classGradeFive.text.toString().toDoubleOrNull() ?: return classGradeFive.setBackgroundResource(R.drawable.edittext_border_error)
+        val grade1 = classGradeOne.text.toString().toDouble()
+        val grade2 = classGradeTwo.text.toString().toDouble()
+        val grade3 = classGradeThree.text.toString().toDouble()
+        val grade4 = classGradeFour.text.toString().toDouble()
+        val grade5 = classGradeFive.text.toString().toDouble()
 
 
         //calculating the user's gpa
@@ -175,6 +180,32 @@ class MainActivity : AppCompatActivity() {
         classGradeFour.setBackgroundResource(R.drawable.edittext_border)
         classGradeFive.setBackgroundResource(R.drawable.edittext_border)
     }
+
+
+    /**
+     * Validates that all provided EditText fields are not empty.
+     * If any field is empty, it sets an error message on that field.
+     *
+     * @param fields Vararg parameter of EditText fields to validate.
+     * @return True if all fields are filled, false if any field is empty.
+     */
+    fun validateGrade(vararg fields: EditText): Boolean {
+        for(field in fields) {
+            if(field.text.toString().isBlank()) {
+
+                //highlights the empty field red and sets an error message
+                field.setBackgroundResource(R.drawable.edittext_border_error)
+                field.error = "${field.hint ?: "This field"} is required"
+                return false
+            }
+            else {
+                //removes any red highlighting if the user has filled in the field
+                field.setBackgroundResource(R.drawable.edittext_border)
+            }
+        }
+        return true
+    }
+
 }
 
 
